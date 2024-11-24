@@ -27,7 +27,8 @@ jobs:
           spectre: true
       - name: Install Qt
         uses: jurplel/install-qt-action@v4
-        version: 6.4.*
+        with:
+          version: 6.4.*
       - uses: actions/setup-python@v1
       - name: Build
         uses: BSFishy/meson-build@v1.0.3
