@@ -28,6 +28,7 @@ jobs:
       - name: Install Qt
         uses: jurplel/install-qt-action@v4
         with:
+          cache: true
           version: 6.4.*
       - uses: actions/setup-python@v5
       - name: Install dependencies
@@ -35,6 +36,8 @@ jobs:
       - name: Configure Project
         run: meson setup builddir/
       - name: Build
-        run: meson build -C builddir/ -v
+        run: |
+          meson build -C builddir/ -v
+          ninja -C builddir -v all
       - name: List files
-        run: find ${{github.workspace}}
+        run: dir /s /b
