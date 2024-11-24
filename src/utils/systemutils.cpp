@@ -263,7 +263,7 @@ QHash<QString, QString> SystemUtils::getAccelerators()
     acceleratorsHash.insert("tcg", "Tiny Code Generator (TCG)");
 #ifdef Q_OS_WIN
     acceleratorsHash.insert("hax", "Hardware Accelerated Execution Manager (HAXM)");
-    acceleratorsHash.insert("whpx", "Windows Hypervisor Platform (WHPX)");
+    acceleratorsHash.insert("whpx,kernel-irqchip=off", "Windows Hypervisor Platform (WHPX)");
 #endif
 
     return acceleratorsHash;

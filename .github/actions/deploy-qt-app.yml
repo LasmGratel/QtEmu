@@ -1,0 +1,37 @@
+name: Build
+on:
+  push: # Run on push
+  pull_request: # Run on pull-request
+jobs:
+  #
+  # Windows build
+  #
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      #
+      # Checkout the repository
+      #
+      - name: Checkout repository and submodules
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+
+      #
+      # Configure MSVC
+      #
+      - name: Configure MSVC
+        uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: x64
+          spectre: true
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v4
+        version: 6.4.*
+      - uses: actions/setup-python@v1
+      - name: Build
+        uses: BSFishy/meson-build@v1.0.3
+        with:
+          action: build
+      - name: List files
+        run: find ${{github.workspace}}

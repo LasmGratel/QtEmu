@@ -398,8 +398,8 @@ WHPXTab::~WHPXTab()
 void WHPXTab::addWHPXAccelerator(bool hvfAccelerator)
 {
     if (hvfAccelerator) {
-        this->m_newMachine->addAccelerator("whpx");
+        this->m_newMachine->addAccelerator("whpx,kernel-irqchip=off");
     } else {
-        this->m_newMachine->removeAccelerator("whpx");
+        this->m_newMachine->removeAccelerator("whpx,kernel-irqchip=off");
     }
 }
