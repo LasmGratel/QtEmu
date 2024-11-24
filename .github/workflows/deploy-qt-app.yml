@@ -36,8 +36,6 @@ jobs:
       - name: Configure Project
         run: meson setup builddir/
       - name: Build
-        run: |
-          meson build -C builddir/ -v
-          ninja -C builddir -v all
+        run: meson build -C builddir/ -v
       - name: List files
-        run: dir /s /b
+        run: Get-ChildItem -Recurse
