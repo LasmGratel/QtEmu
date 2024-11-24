@@ -29,10 +29,12 @@ jobs:
         uses: jurplel/install-qt-action@v4
         with:
           version: 6.4.*
-      - uses: actions/setup-python@v1
+      - uses: actions/setup-python@v5
+      - name: Install dependencies
+        run: python -m pip install meson==1.6.0 ninja
+      - name: Configure Project
+        run: meson setup builddir/
       - name: Build
-        uses: BSFishy/meson-build@v1.0.3
-        with:
-          action: build
+        run: meson build -C builddir/ -v
       - name: List files
         run: find ${{github.workspace}}
