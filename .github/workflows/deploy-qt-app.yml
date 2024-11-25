@@ -39,8 +39,14 @@ jobs:
           generator: Ninja
           options: |
             CMAKE_BUILD_TYPE=Release
+      - name: Deploy
+        run: |
+          mkdir deploy
+          cd deploy
+          cp ../build/QtEmu.exe .
+          windeployqt --release QtEmu.exe
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: QtEmu
-          path: build/QtEmu.exe
+          path: deploy/
